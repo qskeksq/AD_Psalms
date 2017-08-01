@@ -83,7 +83,7 @@ public class ArticleFragment extends Fragment {
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
                         .addToBackStack(null)
-                        .replace(R.id.container, new NewArticleFragment())
+                        .replace(R.id.container, new NewArticleFragment())  // todo 여기서 add 로 하면 옵션메뉴가 계속 축적되는데 이유 찾아내자
                         .commit();
                 break;
         }
