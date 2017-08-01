@@ -8,14 +8,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.administrator.psalms.Read.LibraryActivity;
 import com.example.administrator.psalms.Util.BottomNavigationHelper;
-import com.example.administrator.psalms.Write.WriteMainActivity;
+import com.example.administrator.psalms.Write.TopicActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView navigation;
     private ConstraintLayout layoutHome, layoutLibrary, layoutWrite, layoutAccount;
-   WriteMainActivity activity;
+    TopicActivity topicActivity;
+    LibraryActivity libraryActivity;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +27,11 @@ public class MainActivity extends AppCompatActivity {
         initView();
         setNavigationView();
 
-        if(activity == null){
-            activity = new WriteMainActivity(this);
-    }
+        if (topicActivity == null)
+            topicActivity = new TopicActivity(this);
 
+        if(libraryActivity == null)
+            libraryActivity = new LibraryActivity(this);
     }
 
 

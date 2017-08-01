@@ -10,18 +10,18 @@ import android.widget.TextView;
 import com.example.administrator.psalms.R;
 
 /**
- * Created by Administrator on 2017-08-01.
+ * 시편 주제 리스트
  */
 
-public class WriteMainActivity {
+public class TopicActivity {
 
     private TextView add;
     private TextView order;
     private RecyclerView topicRecycler;
     private Activity activity;
-    WriteMainAdapter adapter;
+    TopicAdapter adapter;
 
-    public WriteMainActivity(Activity activity) {
+    public TopicActivity(Activity activity) {
         this.activity = activity;
         init();
         setTopicRecycler();
@@ -32,7 +32,7 @@ public class WriteMainActivity {
         add = (TextView) activity.findViewById(R.id.add);
         order = (TextView) activity.findViewById(R.id.order);
         topicRecycler = (RecyclerView) activity.findViewById(R.id.topicRecycler);
-        adapter = new WriteMainAdapter(activity);
+        adapter = new TopicAdapter(activity);
     }
 
     private void setTopicRecycler(){

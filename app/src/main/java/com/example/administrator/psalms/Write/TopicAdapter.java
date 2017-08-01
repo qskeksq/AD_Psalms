@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.administrator.psalms.R;
 
@@ -18,11 +17,11 @@ import com.example.administrator.psalms.R;
  * Created by Administrator on 2017-08-01.
  */
 
-public class WriteMainAdapter extends RecyclerView.Adapter<WriteMainAdapter.Holder> {
+public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.Holder> {
 
     Activity activity;
 
-    public WriteMainAdapter(Activity activity) {
+    public TopicAdapter(Activity activity) {
         this.activity = activity;
     }
 
@@ -76,9 +75,8 @@ public class WriteMainAdapter extends RecyclerView.Adapter<WriteMainAdapter.Hold
                 ((AppCompatActivity) activity).getSupportFragmentManager()
                         .beginTransaction()
                         .addToBackStack(null)
-                        .add(R.id.container, new WriteFragment())
+                        .add(R.id.container, new ArticleFragment())
                         .commit();
-                Toast.makeText(v.getContext(), "확인", Toast.LENGTH_SHORT).show();
             });
         }
     }

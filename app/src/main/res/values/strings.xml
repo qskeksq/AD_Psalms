@@ -16,7 +16,7 @@
     <string name="home_confirm">확인</string>
     <string name="home_splash">새 노래 곧 우리 하나님께 올릴 찬송을 내 입에 두셨으니 많은 사람이 보고 두려워하여 여호와를 의지하리로다</string>
 
-    <!-- 쓰기 화면 -->
+    <!-- 쓰기 화면-주제 -->
     <string name="write_add">추가</string>
     <string name="write_order">정렬</string>
 
@@ -31,7 +31,22 @@
 
     <string name="popup_edit">편집</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- 쓰기 화면-상세 -->
+    <string name="article_edit">편집</string>
+    <string name="article_new_article">새 글</string>
+    <string name="article_title">제목</string>
+    <string name="article_content">내용</string>
+    <string name="article_date">날짜</string>
+
+    <!-- 쓰기 화면-새 글-->
+    <string name="new_article_cancel">취소</string>
+    <string name="new_article_save">저장</string>
+    <string name="new_article_temp_save">임시저장</string>
+
+    <!-- 서재 메인 -->
+    <string name="library_my_article">내 서재</string>
+    <string name="library_subscribe">구독</string>
+    <string name="library_add">더보기</string>
+
 
 </resources>
