@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainBackground"
+    tools:context="com.example.administrator.psalms.MainActivity">
+
+    <!-- FrameLayout 으로 하지 않고 LinearLayout 으로 하면 Fragment 를 추가할 때 orientation에 맞춰서 밑이나 옆으로 들어가 버린다
+        따라서 addToBackStack 해 주면 stack 에는 쌓이는데 눈에는 보이지 않는 현상이 나타나는 것!! -->
+
+    <LinearLayout
+        android:id="@+id/inner_container"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/view_container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <include layout="@layout/layout_home" />
+
+            <include
+                layout="@layout/layout_library"
+                android:visibility="invisible" />
+
+            <include
+                layout="@layout/layout_write"
+                android:visibility="invisible" />
+
+            <include
+                layout="@layout/layout_account"
+                android:visibility="invisible" />
+
+        </FrameLayout>
+
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="?android:attr/windowBackground"
+            app:layout_behavior="tech.thdev.app.view.BottomNavigationBehavior"
+            app:menu="@menu/navigation" />
+    </LinearLayout>
+
+</FrameLayout>
