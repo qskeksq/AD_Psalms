@@ -47,6 +47,7 @@
     <string name="article_title">제목</string>
     <string name="article_content">내용</string>
     <string name="article_date">날짜</string>
+    <string name="article_preface">서문</string>
 
     <!-- 쓰기 화면-새 글-->
     <string name="new_article_cancel">취소</string>
@@ -57,6 +58,9 @@
     <string name="library_my_article">내 서재</string>
     <string name="library_subscribe">구독</string>
     <string name="library_add">더보기</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

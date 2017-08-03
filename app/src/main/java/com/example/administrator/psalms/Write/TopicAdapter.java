@@ -12,6 +12,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.administrator.psalms.R;
+import com.example.administrator.psalms.domain.Topic;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017-08-01.
@@ -20,9 +24,14 @@ import com.example.administrator.psalms.R;
 public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.Holder> {
 
     Activity activity;
+    List<Topic> datas = new ArrayList<>();
 
     public TopicAdapter(Activity activity) {
         this.activity = activity;
+    }
+
+    public void setData(List<Topic> datas){
+        this.datas = datas;
     }
 
     @Override
@@ -33,15 +42,16 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.Holder> {
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
-
+        Topic topic = datas.get(position);
+        holder.topicTitle.setText(topic.getTitle());
+        holder.topicWords.setText(topic.getWords());
+        holder.title = topic.getTitle();
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return datas.size();
     }
-
-
 
     public class Holder extends RecyclerView.ViewHolder {
 
@@ -49,17 +59,16 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.Holder> {
         private ImageView topicSettings;
         private TextView topicWords;
         private ConstraintLayout topicLayout;
-        private View view;
+        String title;
 
         public Holder(View itemView) {
             super(itemView);
-            view = itemView;
             initView(itemView);
             setListener();
         }
 
         private void initView(View itemView) {
-            topicTitle = (TextView) itemView.findViewById(R.id.topicTitle);
+            topicTitle = (TextView) itemView.findViewById(R.id.articleTitle);
             topicSettings = (ImageView) itemView.findViewById(R.id.topicSettings);
             topicWords = (TextView) itemView.findViewById(R.id.topicWords);
             topicLayout = (ConstraintLayout) itemView.findViewById(R.id.topicLayout);
@@ -71,13 +80,14 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.Holder> {
                 activity.getMenuInflater().inflate(R.menu.topic, popupMenu.getMenu());
                 popupMenu.show();
             });
-            topicLayout.setOnClickListener(v-> {
+            topicLayout.setOnClickListener(v->
                 ((AppCompatActivity) activity).getSupportFragmentManager()
                         .beginTransaction()
                         .addToBackStack(null)
-                        .add(R.id.container, new ArticleFragment())
-                        .commit();
-            });
+                        // todo 이름을 보내주면 나중에 이름이 같을 경우가 생길 수 있으므로 UUID 고유값으로 바꿔줘야 한다.
+                        .add(R.id.container, ArticleFragment.newInstance(title))
+                        .commit()
+            );
         }
     }
 }

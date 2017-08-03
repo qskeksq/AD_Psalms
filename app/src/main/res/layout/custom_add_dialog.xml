@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/topicTitleInput"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -35,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/topicWordsInput"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -60,27 +60,27 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/topicTitleInput" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/addTopicTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/editText2"
+        app:layout_constraintBottom_toTopOf="@+id/topicTitleInput"
         app:layout_constraintRight_toRightOf="parent"
         app:srcCompat="@drawable/ic_add_black_24dp" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/addTopicWords"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/editText3"
+        app:layout_constraintBottom_toTopOf="@+id/topicWordsInput"
         app:layout_constraintRight_toRightOf="parent"
         app:srcCompat="@drawable/ic_add_black_24dp" />
 
@@ -95,10 +95,10 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/topicWordsInput" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/topicTemplateRecycler"
         android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_marginEnd="8dp"
@@ -111,18 +111,18 @@
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/addTopicTemplate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintBottom_toTopOf="@+id/topicTemplateRecycler"
         app:layout_constraintRight_toRightOf="parent"
         app:srcCompat="@drawable/ic_add_black_24dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/topicConfirm"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -130,18 +130,18 @@
         android:text="@string/dialog_confirm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+        app:layout_constraintRight_toLeftOf="@+id/topicCancel"
+        app:layout_constraintTop_toBottomOf="@+id/topicTemplateRecycler" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/topicCancel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/dialog_cancel"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/button"
+        app:layout_constraintLeft_toRightOf="@+id/topicConfirm"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/topicTemplateRecycler" />
 </android.support.constraint.ConstraintLayout>

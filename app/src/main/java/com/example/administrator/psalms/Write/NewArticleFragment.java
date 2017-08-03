@@ -2,6 +2,7 @@ package com.example.administrator.psalms.Write;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,9 +13,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.administrator.psalms.R;
+import com.example.administrator.psalms.domain.Article;
+import com.example.administrator.psalms.domain.ArticleLab;
 
 /**
  * 새 글 입력 프래그먼트
@@ -22,9 +24,24 @@ import com.example.administrator.psalms.R;
 public class NewArticleFragment extends Fragment {
 
 
-    private EditText editText4;
-    private EditText editText5;
+    private EditText inputTItle;
+    private EditText inputContent;
     private Toolbar toolbar2;
+    String topicTitle;
+
+    public static NewArticleFragment newInstance(String title){
+        NewArticleFragment fragment = new NewArticleFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("title", title);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        topicTitle = getArguments().getString("title");
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,9 +53,9 @@ public class NewArticleFragment extends Fragment {
 
 
     private void init(View view) {
-        editText4 = (EditText) view.findViewById(R.id.editText4);
-        editText5 = (EditText) view.findViewById(R.id.editText5);
-        toolbar2 = (Toolbar) view.findViewById(R.id.articleToolbar);
+        inputTItle= (EditText) view.findViewById(R.id.inputPrefaceTitle);
+        inputContent = (EditText) view.findViewById(R.id.inputContent);
+        toolbar2 = (Toolbar) view.findViewById(R.id.prefaceToolbar);
     }
 
     /**
@@ -64,11 +81,14 @@ public class NewArticleFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.saveArticle:
-                Toast.makeText(getActivity(), "확인", Toast.LENGTH_SHORT).show();
+                Article article = new Article();
+                article.setTitle(inputTItle.getText().toString());
+                article.setContent(inputContent.getText().toString());
+                article.setTopicTitle(topicTitle);
+                ArticleLab.getInstance(getActivity()).create(article);
                 getActivity().onBackPressed();
                 break;
             case R.id.tempSave:
-                Toast.makeText(getActivity(), "확인", Toast.LENGTH_SHORT).show();
                 break;
         }
         return true;
