@@ -3,6 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/getWords"
+        app:showAsAction="always"
+        android:title="@string/new_article_find_words"  />
+
+    <item
         android:id="@+id/saveArticle"
         app:showAsAction="always"
         android:title="@string/new_article_save" />

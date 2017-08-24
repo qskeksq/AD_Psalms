@@ -12,36 +12,33 @@ import com.example.administrator.psalms.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.administrator.psalms.Util.Const.TYPE_DAILY_DECISION;
+import static com.example.administrator.psalms.Util.Const.TYPE_DAILY_QT;
+import static com.example.administrator.psalms.domain.Home.original;
+import static com.example.administrator.psalms.domain.Home.selectedItem;
+
 /**
  * Created by Administrator on 2017-08-02.
  */
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.Holder> {
 
-    static final int TYPE_DAILY_QT = 0;
-    static final int TYPE_DAILY_DECISION = 1;
-    static final int TYPE_RECENT_ARTICLE = 2;
-    static final int TYPE_NEW_ARTICLE = 3;
-    static final int TYPE_MAX = 4;
-
-    public static List<HomeDummy> original = new ArrayList<>();
+    List<HomeDummy> datas;
 
     public HomeAdapter() {
-        setData();
+//        setData();
     }
-
-    public void setData(){
-        Log.e("확인", "setData 호출 확인");
-        original.clear();   // todo 여기서 이거 없애면 데이터가 두 배로 늘어나는데 호출은 한 번 됨. 이유 찾아내자
-        original.add(new HomeDummy(TYPE_DAILY_QT));
-        original.add(new HomeDummy(TYPE_DAILY_DECISION));
-//        original.add(new HomeDummy(TYPE_RECENT_ARTICLE));
-//        original.add(new HomeDummy(TYPE_NEW_ARTICLE));
-    }
+//
+//    public void setData() {
+//        Log.e("확인", "setData 호출 확인");
+//        original.clear();   // todo 여기서 이거 없애면 데이터가 두 배로 늘어나는데 호출은 한 번 됨. 이유 찾아내자
+//        original.add(new HomeDummy(TYPE_DAILY_QT));
+//        original.add(new HomeDummy(TYPE_DAILY_DECISION));
+//    }
 
     @Override
     public int getItemViewType(int position) {
-        return original.get(position).getViewType();
+        return selectedItem.get(position).getViewType();
     }
 
     @Override
@@ -54,31 +51,29 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.Holder> {
             case TYPE_DAILY_DECISION:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_decision, parent, false);
                 break;
-            case TYPE_RECENT_ARTICLE:
-                break;
-            case TYPE_NEW_ARTICLE:
-                break;
         }
         return new Holder(view, viewType);
     }
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
-        if(original.get(position).isShown()){
+        if(selectedItem.get(position).isShown()){
             holder.edit.setVisibility(View.VISIBLE);
         } else {
             holder.edit.setVisibility(View.GONE);
         }
+        holder.position = position;
     }
 
     @Override
     public int getItemCount() {
-        return original.size();
+        return selectedItem.size();
     }
 
     public class Holder extends RecyclerView.ViewHolder {
 
         ImageView edit;
+        int position;
 
         public Holder(View itemView, int viewType) {
             super(itemView);
@@ -89,13 +84,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.Holder> {
                 case TYPE_DAILY_DECISION:
                     edit = (ImageView) itemView.findViewById(R.id.closeDailyDecision);
                     break;
-                case TYPE_RECENT_ARTICLE:
-                    break;
-                case TYPE_NEW_ARTICLE:
-                    break;
             }
-
+            edit.setOnClickListener(v-> {
+                selectedItem.remove(position);
+                notifyDataSetChanged();
+            });
         }
-
     }
 }

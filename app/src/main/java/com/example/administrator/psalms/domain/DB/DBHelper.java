@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.administrator.psalms.domain.Article;
+import com.example.administrator.psalms.domain.Bible;
 import com.example.administrator.psalms.domain.Preface;
 import com.example.administrator.psalms.domain.Topic;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
@@ -39,6 +40,7 @@ public class DBHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.createTable(connectionSource, Topic.class);
             TableUtils.createTable(connectionSource, Article.class);
             TableUtils.createTable(connectionSource, Preface.class);
+            TableUtils.createTableIfNotExists(connectionSource, Bible.class);
         } catch (SQLException e) {
             e.printStackTrace();
         }

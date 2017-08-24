@@ -1,8 +1,10 @@
 package com.example.administrator.psalms.Read;
 
 import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.administrator.psalms.R;
@@ -18,6 +20,7 @@ public class LibraryActivity {
     private TextView subscribe;
     MyLibraryAdapter libraryAdapter;
     SubscribeAdapter subscribeAdapter;
+    Button read;
     Activity activity;
 
     public LibraryActivity(Activity activity) {
@@ -25,12 +28,14 @@ public class LibraryActivity {
         init();
         setLibraryRecycler();
         setSubscribeRecycler();
+        setListener();
     }
 
     private void init() {
         libraryRecycler = (RecyclerView) activity.findViewById(R.id.libraryRecycler);
         subscribeRecycler = (RecyclerView) activity.findViewById(R.id.subscribeRecycler);
         subscribe = (TextView) activity.findViewById(R.id.subscribeTxt);
+        read = (Button) activity.findViewById(R.id.read);
         libraryAdapter = new MyLibraryAdapter(activity);
         subscribeAdapter = new SubscribeAdapter();
         libraryAdapter.setDatas(TopicLab.getInstance(activity).readAll());
@@ -49,6 +54,11 @@ public class LibraryActivity {
         manager.setOrientation(LinearLayoutManager.HORIZONTAL);
         subscribeRecycler.setLayoutManager(manager);
     }
+
+    private void setListener(){
+        read.setOnClickListener(v->((AppCompatActivity)activity).getSupportFragmentManager().beginTransaction().addToBackStack(null).add(R.id.container, new BibleFragment()).commit());
+    }
+
 
 
 }

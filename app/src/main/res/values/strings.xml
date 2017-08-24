@@ -53,6 +53,8 @@
     <string name="new_article_cancel">취소</string>
     <string name="new_article_save">저장</string>
     <string name="new_article_temp_save">임시저장</string>
+    <string name="new_article_find_words">말씀보기</string>
+
 
     <!-- 서재 메인 -->
     <string name="library_my_article">내 서재</string>
